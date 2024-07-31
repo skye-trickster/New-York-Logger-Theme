@@ -14,7 +14,7 @@
 
 <body>
     <div class="checkerboard-pattern"></div>
-    <header>
+    <header id="heading">
         <div class="title-information">
             <div class="title-card">
                 <img
@@ -61,7 +61,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
         <div class="main-wrapper">
             <div class="posts">
                 <article>
@@ -182,7 +182,7 @@
         </div>
     </main>
 
-    <aside>
+    <aside id="side-panel">
         <div class="sidebar">
             <div class="additional-intro">
                 <h2>Draco Meteor</h2>
@@ -214,8 +214,55 @@
                     </li>
                 </ul>
             </nav>
+            <div class="popular-tags">
+                <h2>Primary Muses</h2>
+                <div class="tag-list">
+                    <ul>
+                        <li><a href="#">muse leaf</a></li>
+                        <li><a href="#">muse zinnia</a></li>
+                        <li><a href="#">muse rayquaza</a></li>
+                        <li><a href="#">muse heidi</a></li>
+                        <li><a href="#">muse lauren</a></li>
+                        <li><a href="#">muse lati</a></li>
+                        <li><a href="#">muse melony</a></li>
+                        <li><a href="#">muse hilda</a></li>
+                        <li><a href="#">muse serena</a></li>
+                        <li><a href="#">muse nergal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <nav class="secondary-nav">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="material-symbols-outlined icon">dictionary</span>
+                            <span class="text">Wiki (Kanka Campaign)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="material-symbols-outlined icon">library_books</span>
+                            <span class="text">Tracked Threads</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </aside>
+    <script>
+        const header = document.getElementById("heading");
+        function setTopSpacing() {
+            const height = header.offsetHeight;
+            const main = document.getElementById("main");
+            main.style.paddingTop = `${height}px`;
+            
+            const aside = document.getElementById("side-panel");
+            aside.style.top = `${height}px`;
+        }
+
+        new ResizeObserver(setTopSpacing).observe(header);
+    </script>
+
     <script>
         var id = null;
         var elem = document.getElementsByClassName("checkerboard-pattern")[0];
