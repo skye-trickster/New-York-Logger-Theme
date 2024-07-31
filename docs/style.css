@@ -226,8 +226,6 @@ article header .additional-info {
     justify-content: flex-end;
     align-items: center;
     column-gap: 4px;
-
-    display: none;
 }
 
 .additional-info .actions button {
