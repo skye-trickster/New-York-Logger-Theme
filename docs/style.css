@@ -64,7 +64,6 @@ body > header {
     background-color: black;
     flex: 3;
     padding: 10px 16px;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 54px, calc(100% - 54px) 100%, 0% 100%);
     display: flex;
     flex-direction: row;
     column-gap: 12px;
@@ -88,7 +87,7 @@ body > header {
 
 .secondary-information {
     background-color: #dedede;
-    padding-top: 100px;
+    padding-top: 104px;
     display: flex;
     justify-content: space-between;
     padding-inline: 16px;
@@ -124,8 +123,12 @@ body > header {
     height: 100%;
 }
 
-.secondary-information nav ul li a span {
-    font-size: 1.5em;
+.secondary-information nav ul li a .text {
+    font-size: 1.25em;
+}
+
+.secondary-information nav ul li a .material-sybols-outlined {
+    font-weight: normal;
 }
 
 .secondary-information nav ul li a:hover {
@@ -136,7 +139,7 @@ body > header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-size: 1.5em;
+    font-size: 1.25em;
 }
 
 /* MAIN */
@@ -351,6 +354,7 @@ aside {
     padding: 16px;
     display: flex;
     justify-content: flex-end;
+    overflow: auto;
 }
 
 .sidebar {
@@ -360,6 +364,7 @@ aside {
 
 .sidebar .additional-intro {
     color: white;
+    border: 2px solid black;
 }
 
 .sidebar .additional-intro h2 {
@@ -367,7 +372,7 @@ aside {
     text-align: center;
     padding: 4px;
     font-size: 1.6em;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid black;
 }
 
 .sidebar .additional-intro .description {
@@ -384,6 +389,11 @@ aside {
     background-color: black;
     margin-block-start: 1em;
     position: relative;
+    border: 2px solid black;
+}
+
+.sidebar .secondary-nav ul li:hover {
+    border-color: #300;
 }
 
 .sidebar .secondary-nav ul li a {
@@ -445,18 +455,37 @@ aside {
 .sidebar .popular-tags {
     margin-block-start: 1em;
     color: white;
+    border: 2px solid black;
+    border-bottom: none;
 }
 
-.sidebar .popular-tags h2 {
+.sidebar .popular-tags .tag-title {
     background-color: black;
     text-align: center;
     padding: 4px;
+    border-bottom: 1px solid black;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .popular-tags .tag-title:hover {
+    cursor: pointer;
+}
+
+.sidebar .popular-tags .tag-title h2 {
     font-size: 1.6em;
-    border-bottom: 1px solid #dedede;
+    flex: 1;
 }
 
 .sidebar .popular-tags .tag-list {
     background-color: #222;
+}
+
+.sidebar .popular-tags .tag-list.hidden {
+    display: none;
 }
 
 .sidebar .popular-tags .tag-list ul {
@@ -477,8 +506,12 @@ aside {
     text-align: center;
     text-decoration: none;
     padding: 8px 4px;
-    border-inline-start: 1px solid #888;
-    border-block-end: 1px solid #888;
+    border-inline-start: 2px solid black;
+    border-block-end: 2px solid black;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sidebar .popular-tags .tag-list ul li:nth-child(2n+1) a {
@@ -487,4 +520,82 @@ aside {
 
 .sidebar .popular-tags .tag-list ul li a:hover {
     background-color: #400
+}
+
+/* FOOTER */
+#footer {
+    position: fixed;
+    bottom: 0;
+    padding: 8px 16px;
+    color: white;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    z-index: 500;
+    border-block-start: 2px solid black;
+    background: linear-gradient(#dedede, #555, #303030 40%);
+}
+
+#footer > * {
+    flex: 1;
+}
+
+#footer a {
+    color: white;
+    text-decoration: none;
+}
+
+#footer .search {
+    display: flex;
+}
+
+#footer .search-box {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: black;
+    padding: 4px;
+    position: relative;
+    margin-inline-start: 4px;
+    padding-inline-start: 12px;
+    clip-path: polygon(100% 100%, 100% 0, 16px 0, 0 16px, 16px 100%);
+}
+
+#footer .search-text {
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+
+#footer .search-text:focus-visible {
+    outline: 1px solid #500;
+}
+
+#footer .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+#footer a:hover {
+    color: #faa;
+}
+
+#footer .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+#footer .actions .toggle {
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+#footer .actions .toggle:hover {
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.1);
 }

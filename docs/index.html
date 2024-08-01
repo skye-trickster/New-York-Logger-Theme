@@ -32,25 +32,25 @@
                     <li>
                         <a href="#">
                             <span class="material-symbols-outlined">home</span>
-                            <span>Home</span>
+                            <span class="text">Home</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
                             <span class="material-symbols-outlined">help</span>
-                            <span>Ask</span>
+                            <span class="text">Ask</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
                             <span class="material-symbols-outlined">mail</span>
-                            <span>Submit</span>
+                            <span class="text">Submit</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
                             <span class="material-symbols-outlined">archive</span>
-                            <span>Archive</span>
+                            <span class="text">Archive</span>
                         </a>
                     </li>
                 </ul>
@@ -92,7 +92,7 @@
                                 <div class="actions">
                                     <span class="material-symbols-outlined">favorite</span>
                                     <span class="material-symbols-outlined">cached</span>
-                                    <button class="material-symbols-outlined">label</button>
+                                    <button title="Hide tags" onclick="togglePostTags(event)" class="material-symbols-outlined tag-toggle">label</button>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                                 <div class="actions">
                                     <span class="material-symbols-outlined">favorite</span>
                                     <span class="material-symbols-outlined">cached</span>
-                                    <button class="material-symbols-outlined">label_off</button>
+                                    <button title="Show tags" onclick="togglePostTags(event)" class="material-symbols-outlined tag-toggle">label_off</button>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +215,10 @@
                 </ul>
             </nav>
             <div class="popular-tags">
-                <h2>Primary Muses</h2>
+                <div title="Hide tags" onclick="toggleTagDisplay(event)" class="tag-title">
+                    <span class="material-symbols-outlined icon">collapse_content</span>
+                    <h2 class="title-text">Primary Muses</h2>
+                </div>
                 <div class="tag-list">
                     <ul>
                         <li><a href="#">muse leaf</a></li>
@@ -249,8 +252,26 @@
             </nav>
         </div>
     </aside>
+    <footer id="footer">
+        <div class="search">
+            <div class="search-box">
+                <a href="#" class="material-symbols-outlined">search</a>
+                <input class="search-text" type="text" name="q" placeholder="Search" />
+            </div>
+        </div>
+        <div class="pagination">
+            <a href="#" class="material-symbols-outlined">keyboard_double_arrow_left</a>
+            <span>Page 1</span>
+            <a href="#" class="material-symbols-outlined">keyboard_double_arrow_right</a>
+        </div>
+        <div class="actions">
+            <button onclick="toggleAnimations(event)" title="Disable Animations" class="toggle material-symbols-outlined">check_box</button>
+            <a href="#" class="material-symbols-outlined">code</a>
+        </div>
+    </footer>
     <script>
         const header = document.getElementById("heading");
+        const footer = document.getElementById("footer");
         function setTopSpacing() {
             const height = header.offsetHeight;
             const main = document.getElementById("main");
@@ -260,15 +281,30 @@
             aside.style.top = `${height}px`;
         }
 
+        function setBottomSpacing() {
+            const height = footer.offsetHeight;
+            const main = document.getElementById("main");
+            main.style.paddingBottom = `${height}px`;
+
+            const aside = document.getElementById("side-panel");
+            aside.style.bottom = `${height}px`;
+        }
+
         new ResizeObserver(setTopSpacing).observe(header);
+        new ResizeObserver(setBottomSpacing).observe(footer);
     </script>
 
     <script>
+        let animations = true;
         var id = null;
         var elem = document.getElementsByClassName("checkerboard-pattern")[0];
         var pos = 0;
         clearInterval(id);
-        id = setInterval(frame, 20);
+
+        if (animations) {
+            id = setInterval(frame, 20);
+        }
+        
         function frame() {
             pos = ((pos - 1) + 50) % 50;
             let horizontal_gradient = `repeating-linear-gradient(transparent, transparent ${pos}px, #841808 ${pos}px, #841808 ${pos+2}px, transparent ${pos+2}px, transparent 50px)`;
@@ -279,6 +315,62 @@
             }
             horizontal_gradient = `repeating-linear-gradient(transparent, transparent 24px, #841808 24px, #841808 26px, transparent 26px, transparent 50px)`
             elem.style.background = `${horizontal_gradient}, ${vertical_gradient}`;
+        }
+
+        function toggleAnimations(event) {
+            animations = !animations;
+
+            if(animations) {
+                id = setInterval(frame, 20);
+                event.target.innerText = "check_box";
+                event.target.title = "Disable Animations";
+            } else {
+                clearInterval(id);
+                event.target.innerText = "check_box_outline_blank";
+                event.target.title = "Enable Animations";
+            }
+        }
+
+        function toggleTagDisplay(event) {
+            const getTitle = () => {
+                const target = event.target;
+
+                if (target.classList.contains('tag-title')) {
+                    return target;
+                }
+                return target.closest('.tag-title');
+            }
+
+            const title = getTitle();
+            const icon = title.querySelector('.icon');
+            const popularTags = title.closest('.popular-tags');
+            const tags = popularTags.querySelector('.tag-list');
+
+            if (tags.classList.contains('hidden')) {
+                tags.classList.remove('hidden');
+                icon.innerText = 'collapse_content';
+                title.title = "Hide tags";
+            } else {
+                tags.classList.add('hidden');
+                icon.innerText = 'expand_content';
+                title.title = "Show tags";
+            }
+        }
+
+        function togglePostTags(event) {
+            const button = event.target;
+            const article = button.closest('article');
+            const footer = article.querySelector('footer');
+
+            if (footer.classList.contains('hidden')) {
+                footer.classList.remove('hidden');
+                button.innerText = 'label';
+                button.title = 'Hide tags';
+            } else {
+                footer.classList.add('hidden');
+                button.innerText = 'label_off';
+                button.title = 'Show tags';
+            }
         }
     </script>
 </body>
