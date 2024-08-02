@@ -65,69 +65,71 @@
         <div class="main-wrapper">
             <div class="posts">
                 <article>
-                    <header>
-                        <div class="pin-check">
-                            <span class="material-symbols-outlined">keep</span>
-                            <div class="not-hamburger">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
+                    <div class="pin-check">
+                        <span class="material-symbols-outlined">keep</span>
+                        <div class="not-hamburger">
+                            <div></div>
+                            <div></div>
+                            <div></div>
                         </div>
-                        <div class="post-info">
-                            <div class="post-metadata">
-                                <div><a href=#>12 August 2024</a></div>
-                                <div class="reblogged-from"><span class="material-symbols-outlined">cached</span><a href=#>oflegendariesandtrainers</a></div>
-                            </div>
-                            <h1 class="post-title">TITLE STUFF</h1>
-                            <div class="additional-info">
-                                <div class="notes-check">
-                                    <div class="notes-count">4 notes</div>
-                                    <div class="not-hamburger">
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
+                    </div>
+                    <div class="post">
+                        <header class="post-heading">
+                            <div class="post-info">
+                                <div class="post-metadata">
+                                    <div><a href=#>12 August 2024</a></div>
+                                    <div class="reblogged-from"><span class="material-symbols-outlined">cached</span><a href=#>oflegendariesandtrainers</a></div>
+                                </div>
+                                <h1 class="post-title">TITLE STUFF</h1>
+                                <div class="additional-info">
+                                    <div class="notes-check">
+                                        <div class="notes-count">4 notes</div>
+                                        <div class="not-hamburger">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="actions">
+                                        <span class="material-symbols-outlined">favorite</span>
+                                        <span class="material-symbols-outlined">cached</span>
+                                        <button title="Hide tags" onclick="togglePostTags(event)" class="material-symbols-outlined tag-toggle">label</button>
                                     </div>
                                 </div>
-                                <div class="actions">
-                                    <span class="material-symbols-outlined">favorite</span>
-                                    <span class="material-symbols-outlined">cached</span>
-                                    <button title="Hide tags" onclick="togglePostTags(event)" class="material-symbols-outlined tag-toggle">label</button>
-                                </div>
                             </div>
+                        </header>
+                        <div class="post-body">
+                            <p>
+                                Lorem ipsum odor amet, consectetuer adipiscing elit. Pulvinar nam ipsum lacinia nunc hac. Ultricies semper faucibus aptent dui scelerisque metus. Ad augue efficitur ad cursus cras enim pharetra non. Ridiculus magnis in maecenas massa himenaeos nam aenean iaculis. Nisl non arcu velit nostra aliquet augue ullamcorper lectus. Platea tristique
+                                <a href="#">interdum</a>
+                                at neque interdum, quis ad tristique sollicitudin. Arcu odio quam per, rhoncus fusce luctus adipiscing. Dui etiam aptent sagittis netus pellentesque.
+                            </p>
+                            <figure>
+                                <a href="#">
+                                    <img src="https://64.media.tumblr.com/00f88ae70312b2b0b1d7d1048f80d332/87108b6739758de1-f3/s1280x1920/f7154d00d6c87194ce6576bdb53f32ce09bba138.png" />
+                                </a>
+                            </figure>
+                            <p>Pellentesque tincidunt integer cras dictumst pharetra nisl. Finibus ipsum habitant ut class rutrum nisi vitae. Sit turpis aliquet ut quam volutpat varius feugiat commodo. Vivamus pretium class at mollis montes elementum lorem. Urna donec elementum aliquet aliquam a lacus aliquam condimentum. Netus varius tincidunt facilisi ad consequat. Venenatis pretium fermentum malesuada magna tempor primis. Molestie justo dignissim fermentum per habitasse. Himenaeos tortor commodo duis egestas dui sociosqu aptent laoreet.</p>
                         </div>
-                    </header>
-                    <div class="post-body">
-                        <p>
-                            Lorem ipsum odor amet, consectetuer adipiscing elit. Pulvinar nam ipsum lacinia nunc hac. Ultricies semper faucibus aptent dui scelerisque metus. Ad augue efficitur ad cursus cras enim pharetra non. Ridiculus magnis in maecenas massa himenaeos nam aenean iaculis. Nisl non arcu velit nostra aliquet augue ullamcorper lectus. Platea tristique
-                            <a href="#">interdum</a>
-                            at neque interdum, quis ad tristique sollicitudin. Arcu odio quam per, rhoncus fusce luctus adipiscing. Dui etiam aptent sagittis netus pellentesque.
-                        </p>
-                        <figure>
-                            <a href="#">
-                                <img src="https://64.media.tumblr.com/00f88ae70312b2b0b1d7d1048f80d332/87108b6739758de1-f3/s1280x1920/f7154d00d6c87194ce6576bdb53f32ce09bba138.png" />
-                            </a>
-                        </figure>
-                        <p>Pellentesque tincidunt integer cras dictumst pharetra nisl. Finibus ipsum habitant ut class rutrum nisi vitae. Sit turpis aliquet ut quam volutpat varius feugiat commodo. Vivamus pretium class at mollis montes elementum lorem. Urna donec elementum aliquet aliquam a lacus aliquam condimentum. Netus varius tincidunt facilisi ad consequat. Venenatis pretium fermentum malesuada magna tempor primis. Molestie justo dignissim fermentum per habitasse. Himenaeos tortor commodo duis egestas dui sociosqu aptent laoreet.</p>
+                        <footer>
+                            <ul class="tag-list">
+                                <li class="tag"><a href="#">#tag 1</a></li>
+                                <li class="tag"><a href="#">#tag 2</a></li>
+                                <li class="tag"><a href="#">#tag 3</a></li>
+                            </ul>
+                        </footer>
                     </div>
-                    <footer>
-                        <ul class="tag-list">
-                            <li class="tag"><a href="#">#tag 1</a></li>
-                            <li class="tag"><a href="#">#tag 2</a></li>
-                            <li class="tag"><a href="#">#tag 3</a></li>
-                        </ul>
-                    </footer>
                 </article>
                 <article class="post-image">
-                    <header>
-                        <div class="pin-check">
-                            <span class="material-symbols-outlined">keep</span>
-                            <div class="not-hamburger">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
+                    <div class="pin-check">
+                        <span class="material-symbols-outlined">keep</span>
+                        <div class="not-hamburger">
+                            <div></div>
+                            <div></div>
+                            <div></div>
                         </div>
+                    </div>
+                    <header class="post-heading">
                         <div class="post-info">
                             <div class="post-metadata">
                                 <div><a href=#>12 August 2024</a></div>
@@ -270,6 +272,7 @@
         </div>
     </footer>
     <script>
+        // TODO(Skye): translate this into jquery
         const header = document.getElementById("heading");
         const footer = document.getElementById("footer");
         function setTopSpacing() {
@@ -279,6 +282,13 @@
             
             const aside = document.getElementById("side-panel");
             aside.style.top = `${height}px`;
+
+            // TODO(Skye): have a toggle for whether or not the post heading is sticky
+            const posts = document.getElementsByClassName("post-heading");
+            for (let post of posts) {
+                post.style.position = "sticky";
+                post.style.top = `${height}px`;
+            }
         }
 
         function setBottomSpacing() {

@@ -27,6 +27,8 @@ body > header {
     z-index: 500;
     position: fixed;
     width: 100vw;
+    border-bottom: 2px solid black;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .title-information {
@@ -167,7 +169,7 @@ main {
     margin-bottom: 0;
 }
 
-article header .pin-check, article header .notes-check {
+article .pin-check, article header .notes-check {
     background-color: black;
     color: white;
     padding-block: 4px 2px;
@@ -322,7 +324,7 @@ article footer .tag:hover {
     color: red;
 }
 
-article header .post-info, article .media, article .post-body, article footer {
+article .post {
     box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
 }
 
