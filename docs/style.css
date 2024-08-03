@@ -591,6 +591,12 @@ aside {
     gap: 8px;
 }
 
+#footer .actions .action {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 #footer .actions .toggle {
     color: white;
     background-color: transparent;
