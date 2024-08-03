@@ -5,14 +5,16 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" media="all" href="style.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- My stylesheets -->
+    <link rel="stylesheet" type="text/css" media="all" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="mobile.css" />
 </head>
 
-<body>
+<body id="body">
     <div class="checkerboard-pattern"></div>
     <header id="heading">
         <div class="title-information">
@@ -268,6 +270,10 @@
         </div>
         <div class="actions">
             <div class="action">
+                <span>Mobile Rendering</span>
+                <button onclick="toggleMobileRendering(event)" title="Enable mobile rendering" class="toggle material-symbols-outlined">check_box_outline_blank</button>
+            </div>
+            <div class="action">
                 <span>Sticky Header</span>
                 <button onclick="toggleStickyHeader(event)" title="Disable sticky header" class="toggle material-symbols-outlined">check_box</button>
             </div>
@@ -406,6 +412,23 @@
                 footer.classList.add('hidden');
                 button.innerText = 'label_off';
                 button.title = 'Show tags';
+            }
+        }
+    </script>
+
+    <script>
+        // mobile rendering
+        function toggleMobileRendering(event) {
+            const body = document.getElementById('body');
+            const mobileRendering = body.classList.contains('mobile');
+            if (mobileRendering) {
+                body.classList.remove('mobile');
+                event.target.innerText = "check_box_outline_blank";
+                event.target.title = "Disable Mobile Rendering";
+            } else {
+                body.classList.add('mobile');
+                event.target.innerText = "check_box";
+                event.target.title = "Enable Mobile Rendering";
             }
         }
     </script>
