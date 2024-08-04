@@ -1,0 +1,109 @@
+body.mobile > header {
+    position: initial;
+    box-shadow: none;
+}
+
+.mobile #heading .title-information {
+    clip-path: none;
+    position: initial;
+}
+
+.mobile #heading .secondary-card {
+    display: none;
+}
+
+.mobile #heading .border {
+    clip-path: none;
+    position: initial;
+    background-color: yellow;
+    height: 4px;
+}
+
+.mobile #heading .border::after {
+    display: none;
+    clip-path: none;
+    position: initial;
+}
+
+.mobile .secondary-information {
+    position: sticky;
+    top: 0;
+    padding-top: 0;
+    display: none;
+}
+
+.mobile #mobile-nav {
+    display: block;
+    background-color: #dedede;
+}
+
+#mobile-nav nav ul {
+    list-style: none;
+    display: flex;
+    padding-inline-start: 0;
+    margin-block: 0;
+    font-size: 1.2em;
+    height: 100%;
+}
+
+#mobile-nav nav ul li {
+    display: block;
+    padding-inline-end: 16px;
+}
+
+#mobile-nav nav ul li:last-child {
+    padding-inline-end: 0;
+}
+
+#mobile-nav nav ul li a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    column-gap: 4px;
+    align-items: center;
+    padding-block: 4px;
+    padding-inline: 4px;
+    height: 100%;
+}
+
+#mobile-nav nav ul li a .text {
+    font-size: 1.25em;
+}
+
+#mobile-nav nav ul li a .material-sybols-outlined {
+    font-weight: normal;
+}
+
+#mobile-nav nav ul li a:hover {
+    background-color: red;
+}
+
+.mobile #main {
+    width: 100%;
+    padding: 12px 0;
+}
+
+.mobile .main-wrapper {
+    padding-block-start: 0;
+}
+
+.mobile .posts {
+    max-width: initial;
+}
+
+.mobile .posts article {
+    margin-bottom: 20px;
+}
+
+.mobile .posts article:last-child {
+    margin-bottom: 0;
+}
+
+.mobile .posts article .post {
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.5);
+    border-inline: none;
+}
+
+.mobile #side-panel {
+    display: none;
+}

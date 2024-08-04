@@ -144,6 +144,10 @@ body > header {
     font-size: 1.25em;
 }
 
+#mobile-nav {
+    display: none;
+}
+
 /* MAIN */
 main {
     padding: 12px;
@@ -198,7 +202,7 @@ article .pin-check, article header .notes-check {
 
 article header .post-info {
     background-color: #dedede;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 article header .post-info .post-metadata {
@@ -256,8 +260,6 @@ article header .additional-info {
 
 .post-body {
     background-color: #393939;
-    border: 2px solid black;
-    border-top: none;
     color: white;
     padding: 4px;
 }
@@ -283,8 +285,7 @@ article header .additional-info {
 article footer {
     width: 100%;
     background-color: #dedede;
-    border: 2px solid black;
-    border-top: none;
+    border-top: 2px solid black;
     padding: 4px;
 }
 
@@ -326,11 +327,12 @@ article footer .tag:hover {
 
 article .post {
     box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
+    border: 2px solid black;
 }
 
 .media {
     width: 100%;
-    border-inline: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 .media figure {
@@ -339,11 +341,13 @@ article .post {
 
 .media figure a {
     display: flex;
+    flex: 1;
 }
 
 .media figure img {
     object-fit: contain;
     max-width: 100%;
+    flex: 1;
 }
 
 /* ASIDE CONTENT */

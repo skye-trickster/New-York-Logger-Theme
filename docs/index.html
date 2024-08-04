@@ -63,6 +63,37 @@
         </div>
     </header>
 
+    <div id="mobile-nav" class="mobile-nav">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="material-symbols-outlined">home</span>
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="material-symbols-outlined">help</span>
+                        <span class="text">Ask</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="material-symbols-outlined">mail</span>
+                        <span class="text">Submit</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="material-symbols-outlined">archive</span>
+                        <span class="text">Archive</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
     <main id="main">
         <div class="main-wrapper">
             <div class="posts">
@@ -131,56 +162,58 @@
                             <div></div>
                         </div>
                     </div>
-                    <header class="post-heading">
-                        <div class="post-info">
-                            <div class="post-metadata">
-                                <div><a href=#>12 August 2024</a></div>
-                                <div class="reblogged-from"><span class="material-symbols-outlined">cached</span><a href=#>oflegendariesandtrainers</a></div>
-                            </div>
-                            <div class="additional-info">
-                                <div class="notes-check">
-                                    <div class="notes-count">4 notes</div>
-                                    <div class="not-hamburger">
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
+                    <div class="post">
+                        <header class="post-heading">
+                            <div class="post-info">
+                                <div class="post-metadata">
+                                    <div><a href=#>12 August 2024</a></div>
+                                    <div class="reblogged-from"><span class="material-symbols-outlined">cached</span><a href=#>oflegendariesandtrainers</a></div>
+                                </div>
+                                <div class="additional-info">
+                                    <div class="notes-check">
+                                        <div class="notes-count">4 notes</div>
+                                        <div class="not-hamburger">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="actions">
+                                        <span class="material-symbols-outlined">favorite</span>
+                                        <span class="material-symbols-outlined">cached</span>
+                                        <button title="Show tags" onclick="togglePostTags(event)" class="material-symbols-outlined tag-toggle">label_off</button>
                                     </div>
                                 </div>
-                                <div class="actions">
-                                    <span class="material-symbols-outlined">favorite</span>
-                                    <span class="material-symbols-outlined">cached</span>
-                                    <button title="Show tags" onclick="togglePostTags(event)" class="material-symbols-outlined tag-toggle">label_off</button>
-                                </div>
                             </div>
+                        </header>
+                        <div class="media">
+                            <figure>
+                                <a href="#">
+                                    <img src="https://64.media.tumblr.com/ac1b07dd5247ca190ad0455aba24fb04/5dd0322d3c261da2-d4/s1280x1920/194a406dea0ebbe9b53caec32ed72b7d98e67258.png" />
+                                </a>
+                            </figure>
                         </div>
-                    </header>
-                    <div class="media">
-                        <figure>
-                            <a href="#">
-                                <img src="https://64.media.tumblr.com/ac1b07dd5247ca190ad0455aba24fb04/5dd0322d3c261da2-d4/s1280x1920/194a406dea0ebbe9b53caec32ed72b7d98e67258.png" />
-                            </a>
-                        </figure>
+                        <div class="post-body">
+                            <p>
+                                Lorem ipsum odor amet, consectetuer adipiscing elit. Pulvinar nam ipsum lacinia nunc hac. Ultricies semper faucibus aptent dui scelerisque metus. Ad augue efficitur ad cursus cras enim pharetra non. Ridiculus magnis in maecenas massa himenaeos nam aenean iaculis. Nisl non arcu velit nostra aliquet augue ullamcorper lectus. Platea tristique
+                                <a href="#">interdum</a>
+                                at neque interdum, quis ad tristique sollicitudin. Arcu odio quam per, rhoncus fusce luctus adipiscing. Dui etiam aptent sagittis netus pellentesque.
+                            </p>
+                            <figure>
+                                <a href="#">
+                                    <img src="https://64.media.tumblr.com/00f88ae70312b2b0b1d7d1048f80d332/87108b6739758de1-f3/s1280x1920/f7154d00d6c87194ce6576bdb53f32ce09bba138.png" />
+                                </a>
+                            </figure>
+                            <p>Pellentesque tincidunt integer cras dictumst pharetra nisl. Finibus ipsum habitant ut class rutrum nisi vitae. Sit turpis aliquet ut quam volutpat varius feugiat commodo. Vivamus pretium class at mollis montes elementum lorem. Urna donec elementum aliquet aliquam a lacus aliquam condimentum. Netus varius tincidunt facilisi ad consequat. Venenatis pretium fermentum malesuada magna tempor primis. Molestie justo dignissim fermentum per habitasse. Himenaeos tortor commodo duis egestas dui sociosqu aptent laoreet.</p>
+                        </div>
+                        <footer class="hidden">
+                            <ul class="tag-list">
+                                <li class="tag"><a href="#">#tag 1</a></li>
+                                <li class="tag"><a href="#">#tag 2</a></li>
+                                <li class="tag"><a href="#">#tag 3</a></li>
+                            </ul>
+                        </footer>
                     </div>
-                    <div class="post-body">
-                        <p>
-                            Lorem ipsum odor amet, consectetuer adipiscing elit. Pulvinar nam ipsum lacinia nunc hac. Ultricies semper faucibus aptent dui scelerisque metus. Ad augue efficitur ad cursus cras enim pharetra non. Ridiculus magnis in maecenas massa himenaeos nam aenean iaculis. Nisl non arcu velit nostra aliquet augue ullamcorper lectus. Platea tristique
-                            <a href="#">interdum</a>
-                            at neque interdum, quis ad tristique sollicitudin. Arcu odio quam per, rhoncus fusce luctus adipiscing. Dui etiam aptent sagittis netus pellentesque.
-                        </p>
-                        <figure>
-                            <a href="#">
-                                <img src="https://64.media.tumblr.com/00f88ae70312b2b0b1d7d1048f80d332/87108b6739758de1-f3/s1280x1920/f7154d00d6c87194ce6576bdb53f32ce09bba138.png" />
-                            </a>
-                        </figure>
-                        <p>Pellentesque tincidunt integer cras dictumst pharetra nisl. Finibus ipsum habitant ut class rutrum nisi vitae. Sit turpis aliquet ut quam volutpat varius feugiat commodo. Vivamus pretium class at mollis montes elementum lorem. Urna donec elementum aliquet aliquam a lacus aliquam condimentum. Netus varius tincidunt facilisi ad consequat. Venenatis pretium fermentum malesuada magna tempor primis. Molestie justo dignissim fermentum per habitasse. Himenaeos tortor commodo duis egestas dui sociosqu aptent laoreet.</p>
-                    </div>
-                    <footer class="hidden">
-                        <ul class="tag-list">
-                            <li class="tag"><a href="#">#tag 1</a></li>
-                            <li class="tag"><a href="#">#tag 2</a></li>
-                            <li class="tag"><a href="#">#tag 3</a></li>
-                        </ul>
-                    </footer>
                 </article>
             </div>
         </div>
@@ -271,7 +304,7 @@
         <div class="actions">
             <div class="action">
                 <span>Mobile Rendering</span>
-                <button onclick="toggleMobileRendering(event)" title="Enable mobile rendering" class="toggle material-symbols-outlined">check_box_outline_blank</button>
+                <button id="mobile_button" onclick="toggleMobileRendering(event)" title="Enable mobile rendering" class="toggle material-symbols-outlined">check_box_outline_blank</button>
             </div>
             <div class="action">
                 <span>Sticky Header</span>
@@ -290,6 +323,7 @@
         const footer = document.getElementById("footer");
         let stickyHeader = true;
         function setTopSpacing() {
+            if (document.getElementById('body').classList.contains('mobile')) return;
             const height = header.offsetHeight;
             const main = document.getElementById("main");
             main.style.paddingTop = `${height}px`;
@@ -417,20 +451,41 @@
     </script>
 
     <script>
+        // TODO (skye): remove this
         // mobile rendering
-        function toggleMobileRendering(event) {
+        function setMobileRendering(render) {
+            const target = document.getElementById('mobile_button')
             const body = document.getElementById('body');
             const mobileRendering = body.classList.contains('mobile');
-            if (mobileRendering) {
-                body.classList.remove('mobile');
-                event.target.innerText = "check_box_outline_blank";
-                event.target.title = "Disable Mobile Rendering";
-            } else {
+            if (render) {
                 body.classList.add('mobile');
-                event.target.innerText = "check_box";
-                event.target.title = "Enable Mobile Rendering";
+                target.innerText = "check_box";
+                target.title = "Disable Mobile Rendering";
+                const main = document.getElementById('main');
+                main.style.removeProperty('padding-top');
+                const headers = document.getElementsByClassName("post-heading");
+                for (const header of headers) {
+                    header.style.removeProperty("position");
+                }
+            } else {
+                body.classList.remove('mobile');
+                target.innerText = "check_box_outline_blank";
+                target.title = "Enable Mobile Rendering";
+                setTopSpacing();
             }
         }
+
+        setMobileRendering(false);
+
+        // mobile rendering
+        function toggleMobileRendering(event) {
+            const mobileRendering = body.classList.contains('mobile');
+            setMobileRendering(!mobileRendering);
+        }
+    </script>
+
+    <script>
+
     </script>
 </body>
 </html>
