@@ -6,6 +6,16 @@ body.mobile > header {
 .mobile #heading .title-information {
     clip-path: none;
     position: initial;
+    height: auto;
+    min-height: 100px;
+}
+
+.mobile #heading .title-card {
+    align-items: center;
+}
+
+.mobile #heading .title {
+    margin: 0;
 }
 
 .mobile #heading .secondary-card {
@@ -35,20 +45,27 @@ body.mobile > header {
 .mobile #mobile-nav {
     display: block;
     background-color: #dedede;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid black;
 }
 
 #mobile-nav nav ul {
     list-style: none;
-    display: flex;
     padding-inline-start: 0;
     margin-block: 0;
     font-size: 1.2em;
     height: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    display: flex;
 }
 
 #mobile-nav nav ul li {
-    display: block;
-    padding-inline-end: 16px;
+    display: inline-flex;
+    padding-inline-end: 8px;
+    margin: auto;
 }
 
 #mobile-nav nav ul li:last-child {
@@ -58,11 +75,10 @@ body.mobile > header {
 #mobile-nav nav ul li a {
     text-decoration: none;
     color: black;
-    display: flex;
+    display: inline-flex;
     column-gap: 4px;
     align-items: center;
-    padding-block: 4px;
-    padding-inline: 4px;
+    padding: 16px;
     height: 100%;
 }
 
@@ -106,4 +122,8 @@ body.mobile > header {
 
 .mobile #side-panel {
     display: none;
+}
+
+.mobile #footer {
+    position: initial;
 }

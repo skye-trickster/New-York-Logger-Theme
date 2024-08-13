@@ -564,7 +564,7 @@ aside {
     position: relative;
     margin-inline-start: 4px;
     padding-inline-start: 12px;
-    clip-path: polygon(100% 100%, 100% 0, 16px 0, 0 16px, 16px 100%);
+    clip-path: polygon(100% 100%, 100% 0, 16px 0, 0 50%, 16px 100%);
 }
 
 #footer .search-text {
