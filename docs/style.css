@@ -191,6 +191,7 @@ article .pin-check, article header .notes-check {
     display: flex;
     justify-content: flex-end;
     column-gap: 5px;
+    min-height: 24px;
 }
 
 .not-hamburger div {
@@ -210,6 +211,8 @@ article header .post-info .post-metadata {
     justify-content: space-between;
     align-items: center;
     padding: 4px;
+    overflow: auto;
+    gap: 4px;
 }
 
 .post-info .post-metadata .reblogged-from {
@@ -563,6 +566,7 @@ aside {
     padding: 4px;
     position: relative;
     margin-inline-start: 4px;
+    margin-block: auto;
     padding-inline-start: 12px;
     clip-path: polygon(100% 100%, 100% 0, 16px 0, 0 50%, 16px 100%);
 }
@@ -571,10 +575,11 @@ aside {
     border: none;
     background-color: transparent;
     color: white;
+    margin-block: 8px;
 }
 
 #footer .search-text:focus-visible {
-    outline: 1px solid #500;
+    outline: none;
 }
 
 #footer .pagination {
