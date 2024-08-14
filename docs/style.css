@@ -242,7 +242,7 @@ article header .additional-info {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    column-gap: 4px;
+    column-gap: 8px;
 }
 
 .additional-info .actions button {

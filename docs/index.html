@@ -350,7 +350,6 @@
             const aside = document.getElementById("side-panel");
             aside.style.top = `${height}px`;
 
-            // TODO(Skye): have a toggle for whether or not the post heading is sticky
             const posts = document.getElementsByClassName("post-heading");
             for (let post of posts) {
                 if (stickyHeader) {
@@ -377,7 +376,10 @@
         }
 
         function setBottomSpacing() {
-            const height = footer.offsetHeight;
+            let height = footer.offsetHeight;
+            if (document.getElementById('body').classList.contains('mobile')) {
+                height = 0;
+            }
             const main = document.getElementById("main");
             main.style.paddingBottom = `${height}px`;
 
