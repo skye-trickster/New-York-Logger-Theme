@@ -504,7 +504,17 @@
     </script>
 
     <script>
-
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            const currentScrollPos = window.pageYOffset;
+            const mobileNav = document.getElementById('mobile-nav');
+            if (prevScrollpos > currentScrollPos) {
+                mobileNav.style.top = "0";
+            } else {
+                mobileNav.style.top = `-${mobileNav.offsetHeight}px`;
+            }
+            prevScrollpos = currentScrollPos;
+        } 
     </script>
 </body>
 </html>
