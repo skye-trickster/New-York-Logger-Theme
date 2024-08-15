@@ -13,7 +13,16 @@ html {
     --border: 2px solid var(--border-color);
 
     /** POST STUFF */
+
+    --post-mobile-shadow: 0 4px 3px rgba(0, 0, 0, 0.5);
+    --post-desktop-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
     --post-color: white;
+    --post-background-color: black;
+    --post-header-background-color: #dedede;
+    --post-header-color: black;
+    --post-hamburger-color: #99cc33;
+    --post-header-pin-color: white;
+    --post-header-pin-background-color: black;
 }
 
 * {
@@ -171,9 +180,9 @@ body {
     margin-block-end: 0;
 }
 
-.post-container .pin-check, .post-container header .notes-check {
-    background-color: black;
-    color: white;
+.post-container .pin-check, .post-container .post-heading .notes-check {
+    background-color: var(--post-header-pin-background-color);
+    color: var(--post-header-pin-color);
     padding-block: 4px 2px;
     padding-inline: 8px 14px;
     display: flex;
@@ -193,16 +202,49 @@ body {
 }
 
 .not-hamburger div {
-    background-color: #99cc33;
+    background-color: var(--post-hamburger-color);
     aspect-ratio: 1 / 3;
     height: 100%;
     transform: skew(15deg);
 }
 
 .post-container .post {
-    box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
-    border: 2px solid black;
-    background-color: black;
+    box-shadow: var(--post-mobile-shadow);
+    border-top: var(--border);
+    border-bottom: var(--border);
+    background-color: var(--post-background-color);
+}
+
+.post figure, .post figure a {
+    line-height: 0;
+}
+
+.post figure a {
+    display: block;
+}
+
+.post-heading .post-info {
+    background-color: var(--post-header-background-color);
+    border-bottom: var(--border);
+}
+
+.post-heading .post-metadata {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    overflow: auto;
+    gap: 4px;
+}
+
+.post-heading .post-info .post-metadata * {
+    color: var(--post-header-color);
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.post-heading .post-info .post-metadata .reblogged-from .material-symbols-outlined {
+    margin-inline-end: 4px;
 }
 
 /** TODO: change to screen */
@@ -333,7 +375,20 @@ body {
         margin: auto;
     }
 
-    .posts article {
+    .posts .post-container {
         margin-bottom: 16px;
+    }
+
+    .post-container .post {
+        box-shadow: var(--post-desktop-shadow);
+        border: var(--border);
+    }
+
+    .post-heading .post-metadata {
+        padding: 4px;
+    }
+
+    .post-heading.sticky {
+        position: sticky;
     }
 }

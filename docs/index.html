@@ -324,58 +324,73 @@
         </div>
         <div class="actions">
             <div class="action">
-                <span>Mobile Rendering</span>
-                <button id="mobile_button" onclick="toggleMobileRendering(event)" title="Enable mobile rendering" class="toggle material-symbols-outlined">check_box_outline_blank</button>
-            </div>
-            <div class="action">
                 <span>Sticky Header</span>
-                <button onclick="toggleStickyHeader(event)" title="Disable sticky header" class="toggle material-symbols-outlined">check_box</button>
+                <button id="sticky-toggle" onclick="toggleStickyHeader(event)" title="Enable sticky header" class="toggle material-symbols-outlined">check_box_outline_blank</button>
             </div>
             <div class="action">
                 <span>Animations</span>
-                <button onclick="toggleAnimations(event)" title="Disable Animations" class="toggle material-symbols-outlined">check_box</button>
+                <button id="animation-toggle" onclick="toggleAnimations(event)" title="Disable Animations" class="toggle material-symbols-outlined">check_box</button>
             </div>
             <a href="#" class="material-symbols-outlined">code</a>
         </div>
     </footer>
+
+
     <script>
         // TODO(Skye): translate this into jquery
-        const header = document.getElementById("heading");
-        const footer = document.getElementById("footer");
-        let stickyHeader = true;
+        window.onload = setSpacing;
+        window.onresize = setSpacing;
+        setStickyHeader(false);
+        setAnimationPlayback(true);
+
+        function isMobileDisplay() {
+            const mobileNav = document.querySelector('#mobile-nav');
+            const {display} = window.getComputedStyle(mobileNav);
+            return display !== 'none';
+        }
+
         function setTopSpacing() {
-            if (document.getElementById('body').classList.contains('mobile')) return;
+            if (isMobileDisplay()) return;
+
+            const header = document.querySelector('#heading');
             const height = header.offsetHeight;
             
             const aside = document.getElementById("side-panel");
             aside.style.top = `${height}px`;
 
+            // TODO(skye): add style rule instead of getting all of the items
             const posts = document.getElementsByClassName("post-heading");
             for (let post of posts) {
-                if (stickyHeader) {
-                    post.style.position = "sticky";
-                    post.style.top = `${height}px`;
+                post.style.top = `${height}px`;
+            }
+        }
+
+        function setStickyHeader(sticky) {
+            const postHeadings = document.querySelectorAll('.post-heading');
+            const target = document.querySelector('#sticky-toggle');
+            if (sticky) {
+                for (let heading of postHeadings) {
+                    heading.classList.add('sticky');
                 }
+                target.innerText = "check_box";
+                target.title = "Disable sticky header";
+            } else {
+                for (let heading of postHeadings) {
+                    heading.classList.remove('sticky');
+                }
+                target.innerText = "check_box_outline_blank";
+                target.title = "Enable sticky header";
             }
         }
 
         function toggleStickyHeader(event) {
-            stickyHeader = !stickyHeader
-            if (stickyHeader) {
-                setTopSpacing();
-                event.target.innerText = "check_box";
-                event.target.title = "Disable sticky header";
-            } else {
-                const postHeadings = document.getElementsByClassName('post-heading');
-                for (let heading of postHeadings) {
-                    heading.style.position = "initial";
-                }
-                event.target.innerText = "check_box_outline_blank";
-                event.target.title = "Enable sticky header";
-            }
+            const postHeading = document.querySelector('.post-heading');
+            const sticky = postHeading.classList.contains('sticky');
+            setStickyHeader(!sticky);
         }
 
         function setBottomSpacing() {
+            const footer = document.querySelector('footer');
             let height = footer.offsetHeight;
             if (document.getElementById('body').classList.contains('mobile')) {
                 height = 0;
@@ -390,28 +405,31 @@
             setTopSpacing();
             setBottomSpacing();
         }
-        window.onload = setSpacing;
-        window.onresize = setSpacing;
-    </script>
 
-    <script>
-        let animations = true;
-        function toggleAnimations(event) {
-            animations = !animations;
+        function setAnimationPlayback(playAnimations = true) {
             const animationList = document.getAnimations();
-            if(animations) {
+            const toggle = document.querySelector('#animation-toggle');
+            if (animationList.length === 0) return;
+
+            if (playAnimations) {
                 for (const animation of animationList) {
                     animation.play();
                 }
-                event.target.innerText = "check_box";
-                event.target.title = "Disable Animations";
+                toggle.innerText = "check_box";
+                toggle.title = "Disable Animations";
             } else {
                 for (const animation of animationList) {
                     animation.pause();
                 }
-                event.target.innerText = "check_box_outline_blank";
-                event.target.title = "Enable Animations";
+                toggle.innerText = "check_box_outline_blank";
+                toggle.title = "Enable Animations";
             }
+        }
+
+        function toggleAnimations(event) {
+            const toggle = document.querySelector('#animation-toggle');
+            const animationPlayback = toggle.innerText === 'check_box'
+            setAnimationPlayback(!animationPlayback);
         }
 
         function toggleTagDisplay(event) {
@@ -458,49 +476,18 @@
     </script>
 
     <script>
-        // TODO (skye): remove this
-        // mobile rendering
-        function setMobileRendering(render) {
-            const target = document.getElementById('mobile_button')
-            const body = document.getElementById('body');
-            if (render) {
-                body.classList.add('mobile');
-                target.innerText = "check_box";
-                target.title = "Disable Mobile Rendering";
-                const main = document.getElementById('main');
-                main.style.removeProperty('padding-top');
-                const headers = document.getElementsByClassName("post-heading");
-                for (const header of headers) {
-                    header.style.removeProperty("position");
-                }
-            } else {
-                body.classList.remove('mobile');
-                target.innerText = "check_box_outline_blank";
-                target.title = "Enable Mobile Rendering";
-                setSpacing();
-            }
-        }
-
-        setMobileRendering(false);
-
-        // mobile rendering
-        function toggleMobileRendering(event) {
-            const mobileRendering = body.classList.contains('mobile');
-            setMobileRendering(!mobileRendering);
-        }
-    </script>
-
-    <script>
-        let prevScrollpos = window.pageYOffset;
         window.onscroll = function() {
             const currentScrollPos = window.pageYOffset;
-            const mobileNav = document.getElementById('mobile-nav');
-            if (prevScrollpos > currentScrollPos) {
+            const mobileNav = document.querySelector('#mobile-nav');
+            const prevScrollPos = mobileNav.getAttribute('scrollPos');
+            
+            if (!prevScrollPos || prevScrollPos > currentScrollPos) {
                 mobileNav.style.top = "0";
             } else {
                 mobileNav.style.top = `-${mobileNav.offsetHeight}px`;
             }
-            prevScrollpos = currentScrollPos;
+            // TODO(skye): don't set the attribute.  use a module instead
+            mobileNav.setAttribute('scrollPos', currentScrollPos);
         } 
     </script>
 </body>
