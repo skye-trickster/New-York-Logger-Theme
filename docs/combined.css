@@ -17,7 +17,7 @@ html {
     --post-mobile-shadow: 0 4px 3px rgba(0, 0, 0, 0.5);
     --post-desktop-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
     --post-color: white;
-    --post-background-color: black;
+    --post-background-color: #393939;
     --post-header-background-color: #dedede;
     --post-header-color: black;
     --post-hamburger-color: #99cc33;
