@@ -393,36 +393,19 @@
 
     <script>
         let animations = true;
-        var id = null;
-        var elem = document.getElementsByClassName("checkerboard-pattern")[0];
-        var pos = 0;
-        clearInterval(id);
-
-        if (animations) {
-            id = setInterval(frame, 20);
-        }
-        
-        function frame() {
-            pos = ((pos - 1) + 50) % 50;
-            let horizontal_gradient = `repeating-linear-gradient(transparent, transparent ${pos}px, #841808 ${pos}px, #841808 ${pos+2}px, transparent ${pos+2}px, transparent 50px)`;
-            let vertical_gradient = `repeating-linear-gradient(90deg, transparent, transparent ${pos}px, #841808 ${pos}px, #841808 ${pos+2}px, transparent ${pos+2}px, transparent 50px)`;
-            if (pos === 49) {
-                horizontal_gradient = `repeating-linear-gradient(#841808, #841808 1px, transparent 1px, transparent 49px, #841808 49px, #841808 50px)`;
-                vertical_gradient = `repeating-linear-gradient(90deg, #841808, #841808 1px, transparent 1px, transparent 49px, #841808 49px, #841808 50px)`;
-            }
-            horizontal_gradient = `repeating-linear-gradient(transparent, transparent 24px, #841808 24px, #841808 26px, transparent 26px, transparent 50px)`
-            elem.style.background = `${horizontal_gradient}, ${vertical_gradient}`;
-        }
-
         function toggleAnimations(event) {
             animations = !animations;
-
+            const animationList = document.getAnimations();
             if(animations) {
-                id = setInterval(frame, 20);
+                for (const animation of animationList) {
+                    animation.play();
+                }
                 event.target.innerText = "check_box";
                 event.target.title = "Disable Animations";
             } else {
-                clearInterval(id);
+                for (const animation of animationList) {
+                    animation.pause();
+                }
                 event.target.innerText = "check_box_outline_blank";
                 event.target.title = "Enable Animations";
             }
@@ -506,7 +489,7 @@
     </script>
 
     <script>
-        var prevScrollpos = window.pageYOffset;
+        let prevScrollpos = window.pageYOffset;
         window.onscroll = function() {
             const currentScrollPos = window.pageYOffset;
             const mobileNav = document.getElementById('mobile-nav');

@@ -15,12 +15,20 @@ body {
     background-color: #bd2110;
 }
 
+@keyframes checkerboard {
+    from {background-position: 0;}
+    to {background-position: -50px;}
+}
+
 .checkerboard-pattern {
-    height: 100vh;
-    width: 100vw;
-    background: repeating-linear-gradient(transparent, transparent 24px, #841808 24px, #841808 26px, transparent 26px, transparent 50px), repeating-linear-gradient(90deg, transparent, transparent 48px, #841808 48px, #841808 50px);
+    height: calc(100vh + 100px);
+    width: calc(100vw + 100px);
+    background: repeating-linear-gradient(transparent, transparent 24px, #841808 24px, #841808 26px, transparent 26px, transparent 50px), repeating-linear-gradient(90deg, transparent, transparent 24px, #841808 24px, #841808 26px, transparent 26px, transparent 50px);
     position: fixed;
     z-index: -999; /* far background */
+
+    animation: checkerboard 1s infinite;
+    animation-timing-function: linear;
 }
 
 body > header {
