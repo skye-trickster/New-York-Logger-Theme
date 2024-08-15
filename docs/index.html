@@ -28,6 +28,7 @@
             </div>
             <div class="secondary-card"></div>
         </div>
+        <div class="header-background"></div>
         <div class="border"></div>
         <div class="secondary-information">
             <nav>
@@ -344,8 +345,6 @@
         function setTopSpacing() {
             if (document.getElementById('body').classList.contains('mobile')) return;
             const height = header.offsetHeight;
-            const main = document.getElementById("main");
-            main.style.paddingTop = `${height}px`;
             
             const aside = document.getElementById("side-panel");
             aside.style.top = `${height}px`;
@@ -381,14 +380,17 @@
                 height = 0;
             }
             const main = document.getElementById("main");
-            main.style.paddingBottom = `${height}px`;
 
             const aside = document.getElementById("side-panel");
             aside.style.bottom = `${height}px`;
         }
 
-        new ResizeObserver(setTopSpacing).observe(header);
-        new ResizeObserver(setBottomSpacing).observe(footer);
+        function setSpacing() {
+            setTopSpacing();
+            setBottomSpacing();
+        }
+        window.onload = setSpacing;
+        window.onresize = setSpacing;
     </script>
 
     <script>
@@ -460,7 +462,6 @@
         function setMobileRendering(render) {
             const target = document.getElementById('mobile_button')
             const body = document.getElementById('body');
-            const mobileRendering = body.classList.contains('mobile');
             if (render) {
                 body.classList.add('mobile');
                 target.innerText = "check_box";
@@ -475,7 +476,7 @@
                 body.classList.remove('mobile');
                 target.innerText = "check_box_outline_blank";
                 target.title = "Enable Mobile Rendering";
-                setTopSpacing();
+                setSpacing();
             }
         }
 

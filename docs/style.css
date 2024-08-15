@@ -30,10 +30,10 @@ body {
     animation: checkerboard 1s infinite;
     animation-timing-function: linear;
 }
-
-body > header {
+#heading {
     z-index: 500;
-    position: fixed;
+    position: sticky;
+    top: 0;
     width: 100vw;
     border-bottom: 2px solid black;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -44,7 +44,7 @@ body > header {
     height: 100px;
     z-index: 400;
     clip-path: polygon(0% 0%, 100% 0%, 100% 54px, calc(75%) 54px, calc(75% - 54px) 100%, 0% 100%);
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
 }
@@ -68,6 +68,12 @@ body > header {
     width: 100%;
     height: 100px;
     top: -2px;
+}
+
+.header-background {
+    height: 104px;
+    background-color: #dedede;
+    position: relative;
 }
 
 .title-card {
@@ -97,7 +103,6 @@ body > header {
 
 .secondary-information {
     background-color: #dedede;
-    padding-top: 104px;
     display: flex;
     justify-content: space-between;
     padding-inline: 16px;
@@ -158,9 +163,7 @@ body > header {
 
 /* MAIN */
 main {
-    padding: 12px;
-    padding-top: 150px;
-    padding-right: 0;
+    padding-left: 12px;
     width: 50%;
 }
 
@@ -540,7 +543,7 @@ aside {
 
 /* FOOTER */
 #footer {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     padding: 8px 16px;
     color: white;
