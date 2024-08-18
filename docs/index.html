@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
 
     <!-- My stylesheets -->
-    <link rel="stylesheet" type="text/css" media="all" href="combined.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="style.css" />
 </head>
 
 <body id="body">
@@ -404,14 +404,11 @@
         }
 
         function setBottomSpacing() {
-            const footer = document.querySelector('footer');
-            let height = footer.offsetHeight;
-            if (document.getElementById('body').classList.contains('mobile')) {
-                height = 0;
-            }
-            const main = document.getElementById("main");
+            if (isMobileDisplay()) return;
+            const footer = document.querySelector('#footer');
+            const height = footer.offsetHeight;
 
-            const aside = document.getElementById("side-panel");
+            const aside = document.querySelector("#side-panel");
             aside.style.bottom = `${height}px`;
         }
 
