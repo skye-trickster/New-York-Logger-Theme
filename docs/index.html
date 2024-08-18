@@ -312,9 +312,11 @@
     </aside>
     <footer id="footer">
         <div class="search">
-            <div class="search-box">
-                <a href="#" class="material-symbols-outlined">search</a>
-                <input class="search-text" type="text" name="q" placeholder="Search" />
+            <div>
+                <form class="search-box" onsubmit="performSearch(event)">
+                    <button class="material-symbols-outlined" type="submit">search</button>
+                    <input class="search-text" id="search-text" type="text" name="searchText" placeholder="Search" />
+                </form>
             </div>
         </div>
         <div class="pagination">
@@ -336,6 +338,18 @@
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        function performSearch(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const searchText = formData.get('searchText');
+            if (searchText) {
+                // window.location.replace(`/search/${searchText}`);
+            }
+        }
+    </script>
+
     <script>
         // TODO(Skye): translate this into jquery
         window.onload = setSpacing;
@@ -477,33 +491,32 @@
 
     <script>
         $.fn.extend({
-            toggleText: function(a, b){
+            toggleText: function(a, b) {
                 return this.text(this.text() == b ? a : b);
+            },
+            toggleAttr: function(attr, value1, value2) {
+                return this.attr(attr, this.attr(attr) == value1 ? value2 : value1);
             }
         });
         $(document).ready(function () {
             $(".tag-title").click(function (event) {
                 const parent = $(event.target).closest(".tag-title");
-                $(parent).siblings(".tag-list").slideToggle("fast");
+                $(parent).siblings(".tag-list").slideToggle(200);
                 $(parent).children(".icon").toggleText("expand_content", "collapse_content");
+                $(parent).toggleClass('closed');
+                $(parent).toggleAttr('title', 'Show tags', 'Hide tags');
             });
-        });
-    </script>
-
-    <script>
-        window.onscroll = function() {
-            const currentScrollPos = window.pageYOffset;
-            const mobileNav = document.querySelector('#mobile-nav');
-            const prevScrollPos = mobileNav.getAttribute('scrollPos');
             
-            if (!prevScrollPos || prevScrollPos > currentScrollPos) {
-                mobileNav.style.top = "0";
-            } else {
-                mobileNav.style.top = `-${mobileNav.offsetHeight}px`;
-            }
-            // TODO(skye): don't set the attribute.  use a module instead
-            mobileNav.setAttribute('scrollPos', currentScrollPos);
-        } 
+            // scroll mobile navigation
+            let previousScrollPos = 0;
+            $(window).scroll(function(event) {
+                const mobileNav = $('#mobile-nav');
+                if (!mobileNav || mobileNav.css('display') === 'none') return;
+                const currentScrollPos = $(document).scrollTop();
+                mobileNav.css('top', previousScrollPos > currentScrollPos ? 0 : `-${mobileNav.outerHeight()}px`);
+                previousScrollPos = currentScrollPos;
+            })
+        });
     </script>
 </body>
 </html>

@@ -38,6 +38,16 @@ html {
     --side-panel-link-highlight-hover-color: #ffaa00;
     --side-panel-link-icon-hover-color: #fdd;
     --side-panel-tag-list-background-color: #222;
+
+    /* FOOTER STUFF */
+    --footer-background-color: #303030;
+    --footer-color: white;
+    --footer-gradient-start: #dedede;
+    --footer-gradient-middle: #555;
+    --footer-gradient-end: #303030;
+    --footer-link-hover-color: #faa;
+    --footer-search-text-color: white;
+    --footer-search-text-background-color: black;
 }
 
 * {
@@ -384,6 +394,75 @@ body {
     display: none;
 }
 
+#footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 16px;
+    color: var(--footer-color);
+    border-block-start: var(--border);
+    background-color: #303030;
+    gap: 16px;
+}
+
+footer > * {
+    flex: 1;
+}
+
+#footer a, #footer button {
+    color: var(--footer-color);
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+}
+
+#footer a:hover, #footer button:hover {
+    color: var(--footer-link-hover-color);
+}
+
+#footer button:hover {
+    cursor: pointer;
+}
+
+#footer .search {
+    display: none;
+}
+
+#footer .pagination {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+#footer .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/** TODO: remove action list / replace with settings */
+#footer .actions .action {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
+}
+
+#footer .actions .toggle {
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+#footer .actions .toggle:hover {
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
 /** TODO: change to screen */
 @media screen and (min-width: 700px) {
     #heading {
@@ -529,6 +608,7 @@ body {
         position: sticky;
     }
 
+    /* SIDE PANEL */
     #side-panel {
         display: flex;
         justify-content: flex-end;
@@ -647,6 +727,12 @@ body {
         user-select: none; /* Standard syntax */
         display: flex;
         align-items: center;
+        transition-duration: 0.2s;
+    }
+
+    #side-panel .popular-tags .tag-title.closed {
+        border-bottom: var(--border);
+        transition: border-bottom 0.2s linear;
     }
 
     #side-panel .popular-tags .tag-title h2 {
@@ -690,5 +776,51 @@ body {
 
     #side-panel .tag-list ul li a:hover {
         background-color: var(--side-panel-link-hover-color);
+    }
+
+    /* FOOTER */
+    #footer {
+        position: sticky;
+        bottom: 0;
+        width: 100vw;
+        z-index: 500;
+        background-image: linear-gradient(var(--footer-gradient-start), var(--footer-gradient-middle), var(--footer-gradient-end) 40%);
+        flex-direction: row;
+    }
+
+    #footer .search {
+        display: flex;
+    }
+
+    #footer .search-box {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        background-color: var(--footer-search-text-background-color);
+        padding: 4px;
+        position: relative;
+        margin-inline-start: 4px;
+        margin-block: auto;
+        padding-inline-start: 12px;
+        padding-inline-end: 8px;
+        clip-path: polygon(100% 100%, 100% 0, 16px 0, 0 50%, 16px 100%);
+    }
+
+    #footer .search-text {
+
+        border: none;
+        background-color: transparent;
+        color: var(--footer-search-text-color);
+        margin-block: 8px;
+    }
+
+    #footer .search-text:focus-visible {
+        outline-color: var(--footer-search-text-color);
+        outline-width: 1px;
+        outline-style: dotted;
+    }
+
+    #footer .actions {
+        justify-content: flex-end;
     }
 }
