@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
 
     <!-- My stylesheets -->
     <link rel="stylesheet" type="text/css" media="all" href="style.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="mobile.css" />
 </head>
 
 <body id="body">
@@ -21,6 +21,7 @@
         <div class="title-information">
             <div class="title-card">
                 <img
+                    class="title-avatar"
                     src="https://64.media.tumblr.com/c1f36074eb776f7595ee56a596d9d868/0f0ce84b1430f979-16/s96x96u_c1/786aa230157816348b33c22f8ea2d45c6ebefbe0.pnj"
                     alt="Infinity Energy"
                 />
@@ -117,7 +118,7 @@
     <main id="main">
         <div class="main-wrapper">
             <div class="posts">
-                <article>
+                <article class="post-container">
                     <div class="pin-check">
                         <span class="material-symbols-outlined">keep</span>
                         <div class="not-hamburger">
@@ -166,14 +167,14 @@
                         </div>
                         <footer>
                             <ul class="tag-list">
-                                <li class="tag"><a href="#">#tag 1</a></li>
-                                <li class="tag"><a href="#">#tag 2</a></li>
-                                <li class="tag"><a href="#">#tag 3</a></li>
+                                <li class="tag"><a href="#">tag 1</a></li>
+                                <li class="tag"><a href="#">tag 2</a></li>
+                                <li class="tag"><a href="#">tag 3</a></li>
                             </ul>
                         </footer>
                     </div>
                 </article>
-                <article class="post-image">
+                <article class="post-container post-image">
                     <div class="pin-check">
                         <span class="material-symbols-outlined"></span>
                         <div class="not-hamburger">
@@ -228,9 +229,9 @@
                         </div>
                         <footer class="hidden">
                             <ul class="tag-list">
-                                <li class="tag"><a href="#">#tag 1</a></li>
-                                <li class="tag"><a href="#">#tag 2</a></li>
-                                <li class="tag"><a href="#">#tag 3</a></li>
+                                <li class="tag"><a href="#">tag 1</a></li>
+                                <li class="tag"><a href="#">tag 2</a></li>
+                                <li class="tag"><a href="#">tag 3</a></li>
                             </ul>
                         </footer>
                     </div>
@@ -272,7 +273,7 @@
                 </ul>
             </nav>
             <div class="popular-tags">
-                <div title="Hide tags" onclick="toggleTagDisplay(event)" class="tag-title">
+                <div title="Hide tags" class="tag-title">
                     <span class="material-symbols-outlined icon">collapse_content</span>
                     <h2 class="title-text">Primary Muses</h2>
                 </div>
@@ -311,9 +312,11 @@
     </aside>
     <footer id="footer">
         <div class="search">
-            <div class="search-box">
-                <a href="#" class="material-symbols-outlined">search</a>
-                <input class="search-text" type="text" name="q" placeholder="Search" />
+            <div>
+                <form class="search-box" onsubmit="performSearch(event)">
+                    <button class="material-symbols-outlined" type="submit">search</button>
+                    <input class="search-text" id="search-text" type="text" name="searchText" placeholder="Search" />
+                </form>
             </div>
         </div>
         <div class="pagination">
@@ -323,65 +326,89 @@
         </div>
         <div class="actions">
             <div class="action">
-                <span>Mobile Rendering</span>
-                <button id="mobile_button" onclick="toggleMobileRendering(event)" title="Enable mobile rendering" class="toggle material-symbols-outlined">check_box_outline_blank</button>
-            </div>
-            <div class="action">
                 <span>Sticky Header</span>
-                <button onclick="toggleStickyHeader(event)" title="Disable sticky header" class="toggle material-symbols-outlined">check_box</button>
+                <button id="sticky-toggle" onclick="toggleStickyHeader(event)" title="Enable sticky header" class="toggle material-symbols-outlined">check_box_outline_blank</button>
             </div>
             <div class="action">
                 <span>Animations</span>
-                <button onclick="toggleAnimations(event)" title="Disable Animations" class="toggle material-symbols-outlined">check_box</button>
+                <button id="animation-toggle" onclick="toggleAnimations(event)" title="Disable Animations" class="toggle material-symbols-outlined">check_box</button>
             </div>
             <a href="#" class="material-symbols-outlined">code</a>
         </div>
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        function performSearch(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const searchText = formData.get('searchText');
+            if (searchText) {
+                // window.location.replace(`/search/${searchText}`);
+            }
+        }
+    </script>
+
     <script>
         // TODO(Skye): translate this into jquery
-        const header = document.getElementById("heading");
-        const footer = document.getElementById("footer");
-        let stickyHeader = true;
+        window.onload = setSpacing;
+        window.onresize = setSpacing;
+        setStickyHeader(false);
+        setAnimationPlayback(true);
+
+        function isMobileDisplay() {
+            const mobileNav = document.querySelector('#mobile-nav');
+            const {display} = window.getComputedStyle(mobileNav);
+            return display !== 'none';
+        }
+
         function setTopSpacing() {
-            if (document.getElementById('body').classList.contains('mobile')) return;
+            if (isMobileDisplay()) return;
+
+            const header = document.querySelector('#heading');
             const height = header.offsetHeight;
             
             const aside = document.getElementById("side-panel");
             aside.style.top = `${height}px`;
 
+            // TODO(skye): add style rule instead of getting all of the items
             const posts = document.getElementsByClassName("post-heading");
             for (let post of posts) {
-                if (stickyHeader) {
-                    post.style.position = "sticky";
-                    post.style.top = `${height}px`;
+                post.style.top = `${height}px`;
+            }
+        }
+
+        function setStickyHeader(sticky) {
+            const postHeadings = document.querySelectorAll('.post-heading');
+            const target = document.querySelector('#sticky-toggle');
+            if (sticky) {
+                for (let heading of postHeadings) {
+                    heading.classList.add('sticky');
                 }
+                target.innerText = "check_box";
+                target.title = "Disable sticky header";
+            } else {
+                for (let heading of postHeadings) {
+                    heading.classList.remove('sticky');
+                }
+                target.innerText = "check_box_outline_blank";
+                target.title = "Enable sticky header";
             }
         }
 
         function toggleStickyHeader(event) {
-            stickyHeader = !stickyHeader
-            if (stickyHeader) {
-                setTopSpacing();
-                event.target.innerText = "check_box";
-                event.target.title = "Disable sticky header";
-            } else {
-                const postHeadings = document.getElementsByClassName('post-heading');
-                for (let heading of postHeadings) {
-                    heading.style.position = "initial";
-                }
-                event.target.innerText = "check_box_outline_blank";
-                event.target.title = "Enable sticky header";
-            }
+            const postHeading = document.querySelector('.post-heading');
+            const sticky = postHeading.classList.contains('sticky');
+            setStickyHeader(!sticky);
         }
 
         function setBottomSpacing() {
-            let height = footer.offsetHeight;
-            if (document.getElementById('body').classList.contains('mobile')) {
-                height = 0;
-            }
-            const main = document.getElementById("main");
+            if (isMobileDisplay()) return;
+            const footer = document.querySelector('#footer');
+            const height = footer.offsetHeight;
 
-            const aside = document.getElementById("side-panel");
+            const aside = document.querySelector("#side-panel");
             aside.style.bottom = `${height}px`;
         }
 
@@ -389,28 +416,31 @@
             setTopSpacing();
             setBottomSpacing();
         }
-        window.onload = setSpacing;
-        window.onresize = setSpacing;
-    </script>
 
-    <script>
-        let animations = true;
-        function toggleAnimations(event) {
-            animations = !animations;
+        function setAnimationPlayback(playAnimations = true) {
             const animationList = document.getAnimations();
-            if(animations) {
+            const toggle = document.querySelector('#animation-toggle');
+            if (animationList.length === 0) return;
+
+            if (playAnimations) {
                 for (const animation of animationList) {
                     animation.play();
                 }
-                event.target.innerText = "check_box";
-                event.target.title = "Disable Animations";
+                toggle.innerText = "check_box";
+                toggle.title = "Disable Animations";
             } else {
                 for (const animation of animationList) {
                     animation.pause();
                 }
-                event.target.innerText = "check_box_outline_blank";
-                event.target.title = "Enable Animations";
+                toggle.innerText = "check_box_outline_blank";
+                toggle.title = "Enable Animations";
             }
+        }
+
+        function toggleAnimations(event) {
+            const toggle = document.querySelector('#animation-toggle');
+            const animationPlayback = toggle.innerText === 'check_box'
+            setAnimationPlayback(!animationPlayback);
         }
 
         function toggleTagDisplay(event) {
@@ -457,50 +487,33 @@
     </script>
 
     <script>
-        // TODO (skye): remove this
-        // mobile rendering
-        function setMobileRendering(render) {
-            const target = document.getElementById('mobile_button')
-            const body = document.getElementById('body');
-            if (render) {
-                body.classList.add('mobile');
-                target.innerText = "check_box";
-                target.title = "Disable Mobile Rendering";
-                const main = document.getElementById('main');
-                main.style.removeProperty('padding-top');
-                const headers = document.getElementsByClassName("post-heading");
-                for (const header of headers) {
-                    header.style.removeProperty("position");
-                }
-            } else {
-                body.classList.remove('mobile');
-                target.innerText = "check_box_outline_blank";
-                target.title = "Enable Mobile Rendering";
-                setSpacing();
+        $.fn.extend({
+            toggleText: function(a, b) {
+                return this.text(this.text() == b ? a : b);
+            },
+            toggleAttr: function(attr, value1, value2) {
+                return this.attr(attr, this.attr(attr) == value1 ? value2 : value1);
             }
-        }
-
-        setMobileRendering(false);
-
-        // mobile rendering
-        function toggleMobileRendering(event) {
-            const mobileRendering = body.classList.contains('mobile');
-            setMobileRendering(!mobileRendering);
-        }
-    </script>
-
-    <script>
-        let prevScrollpos = window.pageYOffset;
-        window.onscroll = function() {
-            const currentScrollPos = window.pageYOffset;
-            const mobileNav = document.getElementById('mobile-nav');
-            if (prevScrollpos > currentScrollPos) {
-                mobileNav.style.top = "0";
-            } else {
-                mobileNav.style.top = `-${mobileNav.offsetHeight}px`;
-            }
-            prevScrollpos = currentScrollPos;
-        } 
+        });
+        $(document).ready(function () {
+            $(".tag-title").click(function (event) {
+                const parent = $(event.target).closest(".tag-title");
+                $(parent).siblings(".tag-list").slideToggle(200);
+                $(parent).children(".icon").toggleText("expand_content", "collapse_content");
+                $(parent).toggleClass('closed');
+                $(parent).toggleAttr('title', 'Show tags', 'Hide tags');
+            });
+            
+            // scroll mobile navigation
+            let previousScrollPos = 0;
+            $(window).scroll(function(event) {
+                const mobileNav = $('#mobile-nav');
+                if (!mobileNav || mobileNav.css('display') === 'none') return;
+                const currentScrollPos = $(document).scrollTop();
+                mobileNav.css('top', previousScrollPos > currentScrollPos ? 0 : `-${mobileNav.outerHeight()}px`);
+                previousScrollPos = currentScrollPos;
+            })
+        });
     </script>
 </body>
 </html>
