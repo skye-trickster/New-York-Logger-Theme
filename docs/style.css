@@ -85,7 +85,6 @@ body {
 }
 
 #heading {
-    width: 100vw;
     border-bottom: var(--border);
 }
 
@@ -323,10 +322,33 @@ body {
     width: 100%;
 }
 
+.post .media .click-through {
+    border-top: var(--border);
+}
+
+.post .click-through a {
+	color: var(--post-header-color);
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	padding: 4px;
+	background-color: var(--post-header-background-color);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition-duration: 0.5s;
+}
+
+.post .click-through a:hover {
+    transition: 0.5s;
+    background-color: var(--post-background-color);
+    color: var(--post-link-color);
+}
+
 .post-body {
     background-color: var(--post-background-color);
     color: var(--post-color);
-    padding: 4px 8px;
+    padding: 8px 16px;
 }
 
 .post-body > * {
@@ -841,7 +863,6 @@ footer > * {
     #footer {
         position: sticky;
         bottom: 0;
-        width: 100vw;
         z-index: 500;
         background-image: linear-gradient(var(--footer-gradient-start), var(--footer-gradient-middle), var(--footer-gradient-end) 40%);
         flex-direction: row;
