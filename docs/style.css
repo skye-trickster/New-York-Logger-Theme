@@ -12,6 +12,7 @@ html {
     --border-color: black;
     --border: 2px solid var(--border-color);
     --border-thin: 1px solid var(--border-color);
+    --blockquote-border: 2px solid rgba(255, 255, 255, 0.6);
 
     /** POST STUFF */
 
@@ -280,6 +281,7 @@ body {
     background-color: white;
     margin: 0;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .post-heading .additional-info {
@@ -329,7 +331,8 @@ body {
 
 .post-body > * {
     margin-block-start: 0;
-    margin-block-end: 1em;
+    margin-block-end: var(--font-size);
+    line-height: 1.4;
 }
 
 .post-body > *:last-child {
@@ -345,6 +348,62 @@ body {
     color: var(--post-link-hover-color);
     transition-duration: 0.5s;
 }
+
+.post-body ol, .post-body ul {
+    padding-inline-start: 40px;
+}
+
+.post-body h1 {
+    font-size: 1.75em;
+}
+
+.post-body h2 {
+    font-size: 1.5em;
+}
+
+.post-body h1, .post-body h2 {
+    font-weight: normal;
+}
+
+.post-body blockquote {
+    border-inline-start: var(--blockquote-border);
+    padding-inline-start: var(--font-size);
+    padding-block: 5px;
+}
+
+/* START: Tumblr specific. Not adding to the theme */
+
+p.npf_quirky {
+    font-family: Fairwater,serif;
+    font-size: 24px;
+    line-height: 1.3em;
+}
+
+.post-body .npf_chat {
+    font-family: 'Source Code Pro', monospace;
+}
+
+p.npf_color_rachel, span.npf_color_rachel {
+	color: #00b8ff;
+}
+
+p.npf_color_ross, span.npf_color_ross {
+	color: #00cf35;
+}
+
+p.npf_color_monica, span.npf_color_monica {
+	color: #ff8a00;
+}
+
+p.npf_color_niles, span.npf_color_niles {
+	color: #ff62ce;
+}
+
+p.npf_color_chandler, span.npf_color_chandler {
+	color: #7c5cff;
+}
+
+/* END: Tumblr specific */
 
 .post-container footer {
     width: 100%;
