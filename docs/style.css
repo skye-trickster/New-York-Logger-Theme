@@ -326,6 +326,20 @@ body {
     border-top: var(--border);
 }
 
+div.npf_row {
+    display: flex;
+    gap: 4px;
+    align-items: stretch;
+    overflow: hidden;
+    width: 100%;
+}
+
+div.npf_row .npf_col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 .post .click-through a {
 	color: var(--post-header-color);
 	text-decoration: none;
