@@ -485,6 +485,125 @@
                         </footer>
                     </div>
                 </article>
+                <article class="post-container post-video">
+                    <div class="pin-check">
+                        <span class="material-symbols-outlined"></span>
+                        <div class="not-hamburger">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <header class="post-heading">
+                            <div class="post-info">
+                                <div class="post-metadata">
+                                    <div><a href=#>28 August 2024</a></div>
+                                </div>
+                                <div class="additional-info">
+                                    <div class="notes-check">
+                                        <div class="notes-count">4 notes</div>
+                                        <div class="not-hamburger">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="actions">
+                                        <span class="material-symbols-outlined">favorite</span>
+                                        <span class="material-symbols-outlined">cached</span>
+                                        <button title="Show tags" onclick="togglePostTags(event)" class="material-symbols-outlined tag-toggle">label</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <div class="media">
+                            <figure class="tmblr-embed tmblr-full featured-video">
+                                <iframe
+                                    id="embed-66d3a01041291874140811"
+                                    class="embed_iframe"
+                                    src="https://safe.txmblr.com/svc/embed/inline/https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DZm962qbVjwI#embed-66d3a01041291874140811-partied"
+                                    width="500"
+                                    height="280"
+                                    scrolling="no"
+                                    frameborder="0"
+                                    allowfullscreen="allowfullscreen"
+                                    mozallowfullscreen=""
+                                    webkitallowfullscreen=""
+                                ></iframe>
+                            </figure>
+                        </div>
+                        <div class="post-body">
+                        </div>
+                        <footer>
+                            <ul class="tag-list">
+                                <li class="tag"><a href="#">tag 1</a></li>
+                                <li class="tag"><a href="#">tag 2</a></li>
+                                <li class="tag"><a href="#">tag 3</a></li>
+                            </ul>
+                        </footer>
+                    </div>
+                </article>
+                <article class="post-container post-video">
+                    <div class="pin-check">
+                        <span class="material-symbols-outlined"></span>
+                        <div class="not-hamburger">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <header class="post-heading">
+                            <div class="post-info">
+                                <div class="post-metadata">
+                                    <div><a href=#>31 August 2024</a></div>
+                                </div>
+                                <div class="additional-info">
+                                    <div class="notes-check">
+                                        <div class="notes-count">4 notes</div>
+                                        <div class="not-hamburger">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="actions">
+                                        <span class="material-symbols-outlined">favorite</span>
+                                        <span class="material-symbols-outlined">cached</span>
+                                        <button title="Show tags" onclick="togglePostTags(event)" class="material-symbols-outlined tag-toggle">label</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <div class="media">
+                            <figure class="tmblr-embed tmblr-full featured-video">
+                                <iframe
+                                    id="embed-66d3a01041291874140811"
+                                    class="embed_iframe"
+                                    src="https://safe.txmblr.com/svc/embed/inline/https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DZm962qbVjwI#embed-66d3a01041291874140811-partied"
+                                    width="500"
+                                    height="280"
+                                    scrolling="no"
+                                    frameborder="0"
+                                    allowfullscreen="allowfullscreen"
+                                    mozallowfullscreen=""
+                                    webkitallowfullscreen=""
+                                ></iframe>
+                            </figure>
+                        </div>
+                        <div class="post-body">
+                            This video actually has a body with it.
+                        </div>
+                        <footer>
+                            <ul class="tag-list">
+                                <li class="tag"><a href="#">tag 1</a></li>
+                                <li class="tag"><a href="#">tag 2</a></li>
+                                <li class="tag"><a href="#">tag 3</a></li>
+                            </ul>
+                        </footer>
+                    </div>
+                </article>
             </div>
         </div>
     </main>
@@ -733,6 +852,15 @@
                 button.title = 'Show tags';
             }
         }
+    </script>
+
+    <script>
+        // get rid of stray .post-body tags
+        (function() {
+            const bodies = document.querySelectorAll('.post-body');
+            const bodyList = Array.from(bodies).filter(postBody => postBody.innerHTML.trim() === '');
+            bodyList.forEach(postBody => postBody.remove());
+        })();
     </script>
 
     <script>

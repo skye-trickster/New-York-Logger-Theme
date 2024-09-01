@@ -314,11 +314,14 @@ body {
 
 .post .media {
     width: 100%;
-    border-bottom: var(--border);
 }
 
 .post .media figure img {
     object-fit: contain;
+    width: 100%;
+}
+
+.post .media .tmblr-embed .embed_iframe {
     width: 100%;
 }
 
@@ -389,6 +392,10 @@ div.npf_row .npf_col figure a img {
     background-color: var(--post-background-color);
     color: var(--post-color);
     padding: 8px 16px;
+}
+
+.media ~ .post-body {
+    border-top: var(--border);
 }
 
 .post-body > * {
