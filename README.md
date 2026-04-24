@@ -16,7 +16,7 @@ This is the third Tumblr theme that's created by me, and was inspired on the Uno
 ## Instructions for Installation
 
 1. Please read the License and the Terms of Use before choosing the use this theme.
-2. Download the file [TODO: give file name] and copy the code (or just copy the HTML directly from the page)
+2. Download the file [new_york_logger.theme.html](./new_york_logger.theme.html) and copy the code (or just copy the HTML directly from the page)
 3. Go on your blog and click “Edit Appearance” (it may look like a paint palette) to go to your Customize menu
 4. Click “Custom theme”
 5. Paste the code into the “Edit HTML” box and press “Save”
